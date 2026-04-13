@@ -3,28 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmet Telek</title>
+<title>Ahmet Telek | Portfolio</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 
 <style>
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 }
 
 body {
-    background: #0f172a;
+    background: linear-gradient(-45deg, #0f172a, #1e3a8a, #0f172a, #172554);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: white;
+    overflow-x: hidden;
 }
 
-/* 🔝 NAVBAR */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -32,116 +42,121 @@ nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse; 
     align-items: center;
-    padding: 18px 40px;
-    background: rgba(15, 23, 42, 0.8);
+    padding: 20px 50px;
+    background: rgba(15, 23, 42, 0.6);
     backdrop-filter: blur(10px);
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
-    font-weight: bold;
+    font-weight: 800;
     letter-spacing: 2px;
+    font-size: 1.2rem;
+    color: #38bdf8;
 }
 
 .menu {
     display: flex;
-    gap: 25px;
+    gap: 30px;
 }
 
 .menu a {
-    color: white;
+    color: #cbd5e1;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.3s ease;
 }
 
 .menu a:hover {
     color: #38bdf8;
+    transform: translateY(-2px);
 }
 
-/* 🏠 HERO */
-header {
+header, section {
     height: 100vh;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 40px;
+    padding: 0 10%;
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
 }
 
-header p {
-    margin-top: 10px;
-    color: #94a3b8;
-}
-
-/* 📦 SECTIONS */
-section {
-    padding: 120px 40px;
-    max-width: 1000px;
-    margin: auto;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 1s forwards;
-}
-
-section:nth-child(2) { animation-delay: 0.2s; }
-section:nth-child(3) { animation-delay: 0.4s; }
-section:nth-child(4) { animation-delay: 0.6s; }
-
-/* 🎬 ANIMATION */
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 💻 PROJECTS */
-.card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 20px;
-}
-
-/* 📬 CONTACT */
-.icons {
-    display: flex;
-    gap: 20px;
-    font-size: 1.5rem;
-}
-
-.icons a {
-    color: white;
-    transition: 0.3s;
-}
-
-.icons a:hover {
+header h1 span {
     color: #38bdf8;
 }
 
-/* 📱 MOBILE */
+header p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #f8fafc;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.7);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #38bdf8;
+}
+
+.floating-socials {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.floating-socials a {
+    color: #94a3b8;
+    font-size: 1.5rem;
+    transition: 0.3s ease;
+}
+
+.floating-socials a:hover {
+    color: #38bdf8;
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
-    nav {
-        padding: 15px 20px;
-    }
-
-    header {
-        padding: 0 20px;
-    }
-
-    header h1 {
-        font-size: 2.2rem;
-    }
-
-    .menu {
-        gap: 15px;
-        font-size: 0.8rem;
-    }
+    nav { padding: 15px 20px; }
+    header h1 { font-size: 2.5rem; }
+    header, section { padding: 0 5%; }
+    .floating-socials { bottom: 15px; right: 15px; flex-direction: row; }
 }
 </style>
 </head>
@@ -150,43 +165,70 @@ section:nth-child(4) { animation-delay: 0.6s; }
 
 <nav>
     <div class="logo">AHMET TELEK</div>
-
     <div class="menu">
         <a href="#home">Home</a>
-        <a href="#education">Education</a>
+        <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </div>
 </nav>
 
-<header id="home">
-    <h1>Ahmet Telek</h1>
-    <p>Computer Engineering Student</p>
-    <p>Building clean and functional software projects.</p>
+<header id="home" class="fade-in">
+    <h1>Hello, I'm <span>Ahmet</span>.</h1>
+    <p>Computer Engineering Student. Building clean software, solving algorithms, and turning ideas into functional digital experiences.</p>
 </header>
 
-<section id="education">
-    <h2>Education</h2>
-    <p>Computer Engineering – Istanbul University (2024 – Present)</p>
+<section id="about">
+    <div class="fade-in">
+        <h2>About Me</h2>
+        <p style="color: #94a3b8; max-width: 700px; line-height: 1.8; font-size: 1.1rem;">
+            Hello, I'm Ahmet. I'm 19 years old. I am a first-year Computer Engineering student. I focus on algorithms and object-oriented programming with C and C++; I love keeping my core engineering muscles strong and pushing myself to the limit to constantly improve. This is my portfolio site, and I am here to introduce myself to you. Stay strong!
+        </p>
+        
+        <span style="
+            display: block; 
+            margin-top: 30px; 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-size: 1.6rem; 
+            color: #e2e8f0; 
+            border-left: 3px solid #38bdf8; 
+            padding-left: 15px;
+            opacity: 0.9;">
+            "faute de soleil, sache mûrir dans la glace"
+        </span>
+    </div>
 </section>
 
 <section id="projects">
-    <h2>Projects</h2>
-    <div class="card">
-        Projects will be added here.
+    <div class="fade-in">
+        <h2>Projects</h2>
+        <div class="card" style="text-align: center; padding: 40px; max-width: 600px;">
+            <p style="font-size: 1.2rem; color: #94a3b8;">
+                <i class="fas fa-tools" style="font-size: 2.5rem; margin-bottom: 15px; color: #38bdf8; display: block;"></i>
+                New projects will be added here very soon...
+            </p>
+        </div>
     </div>
 </section>
 
 <section id="contact">
-    <h2>Contact</h2>
-
-    <div class="icons">
-        <a href="#"><i class="fab fa-ahmettelek"></i></a>
-        <a href="#"><i class="fab fa-ahmettelek"></i></a>
-        <a href="#"><i class="fab fa-ahmett.telek"></i></a>
-        <a href="mailto:mail@example.com"><i class="fas fa-envelope"></i></a>
+    <div class="fade-in">
+        <h2>Let's Connect</h2>
+        <p style="color: #94a3b8; margin-bottom: 20px; max-width: 600px; line-height: 1.6;">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out below.
+        </p>
+        <a href="mailto:ahmett.telek@gmail.com" style="color: #38bdf8; text-decoration: none; font-size: 1.3rem; font-weight: bold;">
+            <i class="fas fa-envelope" style="margin-right: 8px;"></i> ahmett.telek@gmail.com
+        </a>
     </div>
 </section>
+
+<div class="floating-socials">
+    <a href="https://github.com/ahmettelek" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/ahmettelek" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://instagram.com/ahmett.telek" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
 
 </body>
 </html>
